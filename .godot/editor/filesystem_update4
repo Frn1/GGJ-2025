@@ -1,8 +1,0 @@
-res://game.tscn
-res://tiles/meta.tres
-res://tiles/debug.tres
-res://scenes/game.tscn
-res://levels/test.tscn
-res://scenes/main-menu.tscn
-res://scripts/main_menu.gd
-res://game.gd
