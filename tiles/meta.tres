@@ -7,13 +7,16 @@
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ioqjw"]
 resource_name = "Player spawns"
 scenes/1/scene = ExtResource("1_22271")
+scenes/1/display_placeholder = ExtResource("1_22271")
 scenes/2/scene = ExtResource("2_3ywmu")
+scenes/2/display_placeholder = ExtResource("2_3ywmu")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_0hbp7"]
 resource_name = "Bubbles"
 scenes/1/scene = ExtResource("3_f7ltl")
+scenes/1/display_placeholder = ExtResource("3_f7ltl")
 
 [resource]
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetScenesCollectionSource_ioqjw")
-sources/2 = SubResource("TileSetScenesCollectionSource_0hbp7")
+sources/1 = SubResource("TileSetScenesCollectionSource_0hbp7")
