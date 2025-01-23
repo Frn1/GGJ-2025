@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://its1rfbkygrf"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_yuqug"]
+
+[node name="Main-menu" type="Node2D"]
+position = Vector2(74, 63)
+script = ExtResource("1_yuqug")
+
+[node name="TitleLabel" type="Label" parent="."]
+offset_left = 45.0
+offset_top = 13.0
+offset_right = 133.0
+offset_bottom = 36.0
+text = "Bubble war"
+metadata/_edit_use_anchors_ = true
+
+[node name="PlayButton" type="Button" parent="."]
+offset_left = 26.0
+offset_top = 47.0
+offset_right = 67.0
+offset_bottom = 78.0
+text = "Play"
+metadata/_edit_use_anchors_ = true
+
+[node name="QuitButton" type="Button" parent="."]
+offset_left = 100.0
+offset_top = 48.0
+offset_right = 142.0
+offset_bottom = 79.0
+text = "Quit"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_QuitButton_pressed"]
