@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://its1rfbkygrf"]
+
+[ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_dq8jc"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dq8jc")
+
+[node name="Items" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Title" type="Label" parent="Items"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Bubble war"
+metadata/_edit_use_anchors_ = true
+
+[node name="Buttons" type="HBoxContainer" parent="Items"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Play" type="Button" parent="Items/Buttons"]
+layout_mode = 2
+text = "Play"
+metadata/_edit_use_anchors_ = true
+
+[node name="Quit" type="Button" parent="Items/Buttons"]
+layout_mode = 2
+text = "Quit"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Items/Buttons/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Items/Buttons/Quit" to="." method="_on_quit_pressed"]

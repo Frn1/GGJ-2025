@@ -9,5 +9,5 @@ scenes/1/scene = ExtResource("1_22271")
 scenes/2/scene = ExtResource("2_3ywmu")
 
 [resource]
-tile_size = Vector2i(8, 8)
+tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetScenesCollectionSource_ioqjw")
