@@ -1,13 +1,19 @@
-[gd_resource type="TileSet" load_steps=4 format=3 uid="uid://bpkjmsw5j4eyn"]
+[gd_resource type="TileSet" load_steps=6 format=3 uid="uid://bpkjmsw5j4eyn"]
 
 [ext_resource type="PackedScene" uid="uid://diwlpf2om1us6" path="res://objects/meta/player0_spawn.tscn" id="1_22271"]
 [ext_resource type="PackedScene" uid="uid://b44dtspvr5ath" path="res://objects/meta/player1_spawn.tscn" id="2_3ywmu"]
+[ext_resource type="PackedScene" uid="uid://c67sexms4m21d" path="res://objects/meta/bubble_spawn.tscn" id="3_f7ltl"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ioqjw"]
 resource_name = "Player spawns"
 scenes/1/scene = ExtResource("1_22271")
 scenes/2/scene = ExtResource("2_3ywmu")
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_0hbp7"]
+resource_name = "Bubbles"
+scenes/1/scene = ExtResource("3_f7ltl")
+
 [resource]
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetScenesCollectionSource_ioqjw")
+sources/2 = SubResource("TileSetScenesCollectionSource_0hbp7")

@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://its1rfbkygrf"]
+[gd_scene load_steps=3 format=3 uid="uid://its1rfbkygrf"]
 
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_dq8jc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vkqbu"]
+font_size = 48
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -25,6 +28,7 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Bubble war"
+label_settings = SubResource("LabelSettings_vkqbu")
 metadata/_edit_use_anchors_ = true
 
 [node name="Buttons" type="HBoxContainer" parent="Items"]
@@ -35,11 +39,13 @@ alignment = 1
 
 [node name="Play" type="Button" parent="Items/Buttons"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Play"
 metadata/_edit_use_anchors_ = true
 
 [node name="Quit" type="Button" parent="Items/Buttons"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Quit"
 metadata/_edit_use_anchors_ = true
 

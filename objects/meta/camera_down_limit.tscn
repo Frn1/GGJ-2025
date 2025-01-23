@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bgrt4ig3n5t2p"]
-
-[ext_resource type="Script" path="res://objects/meta/camera_limit.gd" id="1_edvgv"]
-
-[node name="CameraDownLimit" type="Node2D"]
-script = ExtResource("1_edvgv")
-camera_limit_side = 2

@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://objects/meta/player_spawn.gd" id="1_4xjet"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_lpdya"]
-font_size = 10
+[sub_resource type="LabelSettings" id="LabelSettings_mj8py"]
+font_size = 24
 
 [node name="Player1SpawnPoint" type="Node2D"]
 script = ExtResource("1_4xjet")
@@ -23,6 +23,6 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 text = "Player 1 spawn"
-label_settings = SubResource("LabelSettings_lpdya")
+label_settings = SubResource("LabelSettings_mj8py")
 horizontal_alignment = 1
 vertical_alignment = 1
