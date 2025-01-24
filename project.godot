@@ -57,6 +57,28 @@ move_right_p0={
 , Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":0,"axis_value":1.0,"script":null)
 ]
 }
+jump_p1={
+"deadzone": 0.5,
+"events": []
+}
+attack_p1={
+"deadzone": 0.5,
+"events": []
+}
+move_left_p1={
+"deadzone": 0.5,
+"events": []
+}
+move_right_p1={
+"deadzone": 0.5,
+"events": []
+}
+
+[layer_names]
+
+2d_physics/layer_1="Ground"
+2d_physics/layer_2="Players"
+2d_physics/layer_3="Items"
 
 [rendering]
 

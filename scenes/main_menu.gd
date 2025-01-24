@@ -1,5 +1,8 @@
 extends Control
 
+func _init() -> void:
+	print("aaa")
+
 func _ready() -> void:
 	if OS.has_feature("web"):
 		$Items/Buttons/Quit.free()
@@ -13,6 +16,7 @@ func _on_play_pressed() -> void:
 	game.level_scene = preload("res://levels/test.tscn")
 	var new_game_scene = PackedScene.new()
 	new_game_scene.pack(game)
+	game.free()
 	get_tree().change_scene_to_packed(new_game_scene)
 
 func _on_quit_pressed() -> void:
