@@ -6,10 +6,10 @@
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ioqjw"]
 resource_name = "Player spawns"
-scenes/1/scene = ExtResource("1_22271")
-scenes/1/display_placeholder = ExtResource("1_22271")
-scenes/2/scene = ExtResource("2_3ywmu")
-scenes/2/display_placeholder = ExtResource("2_3ywmu")
+scenes/0/scene = ExtResource("1_22271")
+scenes/0/display_placeholder = ExtResource("1_22271")
+scenes/1/scene = ExtResource("2_3ywmu")
+scenes/1/display_placeholder = ExtResource("2_3ywmu")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_0hbp7"]
 resource_name = "Bubbles"

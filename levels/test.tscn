@@ -9,7 +9,7 @@
 script = ExtResource("1_2ay1g")
 
 [node name="Meta" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAD0////AAAAAAAAAQALAP//AAAAAAAAAgD0//z/AQAAAAAAAQD6//T/AQAAAAAAAQABAPf/AQAAAAAAAQAJAPT/AQAAAAAAAQAKAPr/AQAAAAAAAQA=")
+tile_map_data = PackedByteArray("AAD0//z/AQAAAAAAAQD6//T/AQAAAAAAAQABAPf/AQAAAAAAAQAJAPT/AQAAAAAAAQAKAPr/AQAAAAAAAQD0////AAAAAAAAAAALAP//AAAAAAAAAQA=")
 tile_set = ExtResource("2_8jw38")
 
 [node name="Terrain" type="TileMapLayer" parent="."]
