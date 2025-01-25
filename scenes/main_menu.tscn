@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_dq8jc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vkqbu"]
-font_size = 48
+font_size = 128
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -34,18 +34,18 @@ metadata/_edit_use_anchors_ = true
 [node name="Buttons" type="HBoxContainer" parent="Items"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_constants/separation = 10
+theme_override_constants/separation = 30
 alignment = 1
 
 [node name="Play" type="Button" parent="Items/Buttons"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 64
 text = "Play"
 metadata/_edit_use_anchors_ = true
 
 [node name="Quit" type="Button" parent="Items/Buttons"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 64
 text = "Quit"
 metadata/_edit_use_anchors_ = true
 
