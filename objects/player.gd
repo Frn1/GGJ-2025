@@ -62,7 +62,7 @@ func _physics_process(delta: float) -> void:
 	if shoot:
 		shoot()
 		
-	if (sprite.sprite_frames.get_animation_loop(sprite.animation)) and sprite.is_playing():
+	if sprite.sprite_frames.get_animation_loop(sprite.animation) == false and sprite.is_playing():
 		# If the animation doesn't loop we should not interrupt it with another animation
 		pass
 	elif disable_input:
