@@ -23,9 +23,9 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	
-	var jump = Input.is_action_just_pressed("jump_p" + str(number)) and is_on_floor() 
-	if jump:
+	if Input.is_action_just_pressed("jump_p" + str(number)) and is_on_floor():
 		velocity.y = -jump_velocity
+		sprite.animation = "jump"
 	
 	var direction: float = Input.get_axis("move_left_p" + str(number), "move_right_p" + str(number))
 	if direction:
@@ -40,17 +40,17 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	
-	if not jump and is_zero_approx(velocity.y):
+	if sprite.animation == "jump" and sprite.is_playing():
+		pass
+	elif is_zero_approx(velocity.y):
 		if is_zero_approx(direction):
-			sprite.animation = "idle"
+			sprite.play("idle")
 		else:
-			sprite.animation = "running"
+			sprite.play("running")
 	elif velocity.y > 0:
-		sprite.animation = "midair"
+		sprite.play("midair")
 	elif velocity.y < 0:
-		sprite.animation = "falling"
-	else:
-		sprite.animation = "jump"
+		sprite.play("falling")
 
 
 func _on_bubble_collected() -> void:
