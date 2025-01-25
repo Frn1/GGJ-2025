@@ -13,7 +13,7 @@ func _on_play_pressed() -> void:
 	game.level_scene = preload("res://levels/level_1.tscn")
 	var new_game_scene = PackedScene.new()
 	new_game_scene.pack(game)
-	get_tree().change_scene_to_packed(new_game_scene)
+	TransitionController.change_to_scene(new_game_scene)
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
