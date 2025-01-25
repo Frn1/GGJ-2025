@@ -27,4 +27,5 @@ visible = false
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 autoplay = true
 
+[connection signal="bubble_collected" from="." to="." method="spawn_random_bubble"]
 [connection signal="unpause" from="UI/PauseMenu" to="UI" method="unpause_game"]

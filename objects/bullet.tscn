@@ -18,3 +18,5 @@ shape = SubResource("SegmentShape2D_11ohv")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.125, 0.025)
 texture = ExtResource("1_6qopm")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

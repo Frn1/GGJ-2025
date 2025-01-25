@@ -1,3 +1,5 @@
+class_name Game
+
 extends Node2D
 
 @export var level_scene: PackedScene
@@ -12,6 +14,8 @@ var last_bubble_coords: Array = []
 
 var player_0: Player
 var player_1: Player
+
+signal bubble_collected
 
 func spawn_random_bubble() -> void:
 	const BUBBLE_SPAWN_SOURCE_ID: int = 1
@@ -63,8 +67,7 @@ func _ready() -> void:
 	add_child(level)
 	spawn_player(0)
 	spawn_player(1)
-	player_0.bubble_collected.connect(spawn_random_bubble)
-	player_1.bubble_collected.connect(spawn_random_bubble)
+	spawn_random_bubble()
 	spawn_random_bubble()
 
 func _process(_delta: float) -> void:

@@ -3,7 +3,7 @@ class_name Bullet
 extends Area2D
 
 # Player who fired the bullet
-var player: int = 0
+var player: Player
 # Angle the bullet travels at
 var angle: float = 0
 # Speed the bullet travels at
@@ -12,3 +12,18 @@ var angle: float = 0
 func _physics_process(delta: float) -> void:
 	var forward = Vector2.from_angle(angle)
 	global_position += forward * delta * speed
+
+var hit = false
+
+func _on_body_entered(body: Node2D) -> void:
+	print(body)
+	if hit:
+		return
+	if body is Player:
+		if body == player:
+			return
+		if body.bubbles > 0:
+			body.bubble_lost.emit()
+			player.bubble_gained.emit()
+	hit = true
+	queue_free()

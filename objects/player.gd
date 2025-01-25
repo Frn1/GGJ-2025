@@ -11,7 +11,7 @@ extends CharacterBody2D
 
 @export var bullet_scene: PackedScene = preload("res://objects/bullet.tscn")
 
-signal bubble_collected
+signal bubble_gained
 signal bubble_lost
 
 @onready var sprite = $Sprite
@@ -58,6 +58,7 @@ func _physics_process(delta: float) -> void:
 	if shoot:
 		var bullet: Bullet = bullet_scene.instantiate()
 		get_parent().add_child(bullet)
+		bullet.player = self
 		bullet.global_position = bullet_spawn.global_position
 		if flipped:
 			bullet.angle = PI
@@ -78,7 +79,7 @@ func _physics_process(delta: float) -> void:
 		if shoot:
 			sprite.animation += "_shoot"
 
-func _on_bubble_collected() -> void:
+func _on_bubble_gained() -> void:
 	bubbles += 1
 
 func _on_bubble_lost() -> void:
