@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://ui/pause_menu.gd" id="1_k1hg0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_berwx"]
-font_size = 48
+font_size = 64
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3
@@ -30,6 +30,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 20
 alignment = 1
 
 [node name="Paused" type="Label" parent="VBoxContainer"]
@@ -41,18 +42,19 @@ label_settings = SubResource("LabelSettings_berwx")
 [node name="Buttons" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
+theme_override_constants/separation = 30
 alignment = 1
 
 [node name="Resume" type="Button" parent="VBoxContainer/Buttons"]
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 48
 text = "Resume"
 metadata/_edit_use_anchors_ = true
 
 [node name="Main Menu" type="Button" parent="VBoxContainer/Buttons"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 48
 text = "Main Menu"
 
 [connection signal="pressed" from="VBoxContainer/Buttons/Resume" to="." method="_on_resume_pressed"]

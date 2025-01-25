@@ -1,8 +1,5 @@
 extends Control
 
-func _init() -> void:
-	print("aaa")
-
 func _ready() -> void:
 	if OS.has_feature("web"):
 		$Items/Buttons/Quit.free()

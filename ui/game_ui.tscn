@@ -4,7 +4,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_wxwh7"]
 line_spacing = 0.0
-font_size = 64
+font_size = 96
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -18,8 +18,8 @@ script = ExtResource("1_kj6iv")
 [node name="Scores" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.3
-anchor_right = 0.7
+anchor_left = 0.35
+anchor_right = 0.65
 anchor_bottom = 0.2
 grow_horizontal = 2
 color = Color(0, 0, 0, 0.156863)
