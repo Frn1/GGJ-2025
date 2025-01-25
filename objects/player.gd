@@ -7,7 +7,10 @@ extends CharacterBody2D
 @export var speed = 300.0
 @export var jump_velocity = 400.0
 
-@export var score: int = 0
+@export var bubbles: int = 0
+
+signal bubble_collected
+signal bubble_lost
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -23,3 +26,10 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, speed)
 	
 	move_and_slide()
+
+
+func _on_bubble_collected() -> void:
+	bubbles += 1
+
+func _on_bubble_lost() -> void:
+	bubbles -= 1

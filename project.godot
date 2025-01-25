@@ -85,6 +85,10 @@ move_right_p1={
 2d_physics/layer_2="Players"
 2d_physics/layer_3="Items"
 
+[physics]
+
+2d/default_gravity=1000.0
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

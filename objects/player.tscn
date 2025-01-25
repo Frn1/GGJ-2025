@@ -15,3 +15,6 @@ texture = ExtResource("2_dn4m6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_iimd1")
+
+[connection signal="bubble_collected" from="." to="." method="_on_bubble_collected"]
+[connection signal="bubble_lost" from="." to="." method="_on_bubble_lost"]
