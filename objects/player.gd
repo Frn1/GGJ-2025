@@ -16,9 +16,11 @@ signal bubble_lost
 
 @onready var sprite = $Sprite
 @onready var bullet_spawn = $Sprite/BulletSpawn
+@onready var reload_timer = $ReloadTimer
 
 var flipped: bool = false
 var was_on_floor: bool = is_on_floor()
+var can_shoot = true
 
 func _ready() -> void:
 	sprite.sprite_frames = load("res://objects/player/{0}/animations.tres".format([number]))
@@ -56,13 +58,8 @@ func _physics_process(delta: float) -> void:
 	
 	var shoot = Input.is_action_just_pressed("attack_p" + str(number))
 	if shoot:
-		var bullet: Bullet = bullet_scene.instantiate()
-		get_parent().add_child(bullet)
-		bullet.player = self
-		bullet.global_position = bullet_spawn.global_position
-		if flipped:
-			bullet.angle = PI
-	
+		shoot()
+		
 	if (sprite.animation == "jump" or sprite.animation == "landing" or sprite.animation.ends_with("shoot")) and sprite.is_playing():
 		pass
 	else:
@@ -79,8 +76,25 @@ func _physics_process(delta: float) -> void:
 		if shoot:
 			sprite.animation += "_shoot"
 
+func shoot() -> void:
+	if can_shoot == false:
+		return
+	var bullet: Bullet = bullet_scene.instantiate()
+	get_parent().add_child(bullet)
+	bullet.player = self
+	bullet.global_position = bullet_spawn.global_position
+	if flipped:
+		bullet.angle = PI
+	sprite.modulate = Color(0.7, 0.7, 0.7)
+	can_shoot = false
+	reload_timer.start()
+
 func _on_bubble_gained() -> void:
 	bubbles += 1
 
 func _on_bubble_lost() -> void:
 	bubbles -= 1
+
+func _on_reload_timer_timeout() -> void:
+	can_shoot = true
+	sprite.modulate = Color.WHITE
