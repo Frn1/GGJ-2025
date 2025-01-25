@@ -8,7 +8,7 @@
 script = ExtResource("1_i7jbm")
 
 [node name="Meta" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAADAPz/AQAAAAAAAQAKAPz/AQAAAAAAAQAKAP7/AAAAAAAAAQD1//7/AAAAAAAAAAD1//z/AQAAAAAAAQD8//z/AQAAAAAAAQA=")
+tile_map_data = PackedByteArray("AADz/wUAAAAAAAAAAAAOAAUAAAAAAAAAAQD8/wMAAQAAAAAAAQADAAMAAQAAAAAAAQDz/wMAAQAAAAAAAQAOAAMAAQAAAAAAAQA=")
 tile_set = ExtResource("2_bmjkp")
 collision_enabled = false
 

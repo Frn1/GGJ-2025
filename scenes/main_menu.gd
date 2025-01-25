@@ -10,10 +10,9 @@ func _on_play_pressed() -> void:
 	# cargados, instancio la escena "game", la modifico y la vuelvo a empaquetar
 	var template_game_scene = preload("res://scenes/game.tscn")
 	var game = template_game_scene.instantiate()
-	game.level_scene = preload("res://levels/test.tscn")
+	game.level_scene = preload("res://levels/level_1.tscn")
 	var new_game_scene = PackedScene.new()
 	new_game_scene.pack(game)
-	game.free()
 	get_tree().change_scene_to_packed(new_game_scene)
 
 func _on_quit_pressed() -> void:

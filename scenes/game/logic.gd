@@ -31,7 +31,7 @@ func spawn_random_bubble() -> void:
 				last_bubble_coords.pop_front()
 			var bubble: Node2D = bubble_scene.instantiate()
 			bubble.position = pos
-			$Bubbles.add_child(bubble)
+			$Bubbles.add_child.call_deferred(bubble)
 			break
 		
 func spawn_player(number: int) -> void:
