@@ -95,7 +95,6 @@ autoplay = "default"
 libraries = {
 "": SubResource("AnimationLibrary_c5ked")
 }
-autoplay = "idle"
 playback_auto_capture_transition_type = 2
 playback_auto_capture_ease_type = 2
 

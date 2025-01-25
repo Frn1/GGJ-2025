@@ -1,7 +1,10 @@
-[gd_resource type="SpriteFrames" load_steps=17 format=3 uid="uid://ch0rn4io6wssm"]
+[gd_resource type="SpriteFrames" load_steps=20 format=3 uid="uid://ch0rn4io6wssm"]
 
+[ext_resource type="Texture2D" uid="uid://md5cssoiad7s" path="res://objects/player/0/falling.png" id="1_842wv"]
 [ext_resource type="Texture2D" uid="uid://came02438k2el" path="res://objects/player/0/idle.png" id="1_pnlub"]
 [ext_resource type="Texture2D" uid="uid://dsk21q5r3kupb" path="res://objects/player/0/running.png" id="2_a2uxw"]
+[ext_resource type="Texture2D" uid="uid://bx6jeeeyqtedr" path="res://objects/player/0/jump_start.png" id="3_x1our"]
+[ext_resource type="Texture2D" uid="uid://2e5a5w3g8v12" path="res://objects/player/0/midair.png" id="4_87f3o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4hfef"]
 atlas = ExtResource("1_pnlub")
@@ -63,6 +66,14 @@ region = Rect2(448, 0, 64, 72)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("1_842wv")
+}],
+"loop": true,
+"name": &"falling",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_4hfef")
 }, {
 "duration": 1.0,
@@ -83,6 +94,22 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_x1our")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_87f3o")
+}],
+"loop": true,
+"name": &"midair",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,

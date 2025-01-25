@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://its1rfbkygrf"]
+[gd_scene load_steps=4 format=3 uid="uid://its1rfbkygrf"]
 
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_dq8jc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vkqbu"]
 font_size = 128
+
+[sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_5yvyr"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -48,6 +50,9 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "Quit"
 metadata/_edit_use_anchors_ = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamMicrophone_5yvyr")
 
 [connection signal="pressed" from="Items/Buttons/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Items/Buttons/Quit" to="." method="_on_quit_pressed"]
