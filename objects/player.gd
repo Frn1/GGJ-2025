@@ -4,12 +4,13 @@ extends CharacterBody2D
 
 @export_range(0, 1) var number = 0 
 
+@export var bullet_scene: PackedScene = preload("res://objects/bullet.tscn")
+
 @export var speed = 300.0
 @export var jump_velocity = 400.0
 
+@export var disable_input: bool = false
 @export var bubbles: int = 0
-
-@export var bullet_scene: PackedScene = preload("res://objects/bullet.tscn")
 
 signal bubble_gained
 signal bubble_lost
@@ -35,15 +36,16 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor() and was_on_floor == false:
 		sprite.play("landing")
 		
-	if Input.is_action_just_pressed("jump_p" + str(number)) and is_on_floor():
+	if Input.is_action_just_pressed("jump_p" + str(number)) and is_on_floor() and disable_input == false:
 		velocity.y = -jump_velocity
 		sprite.play("jump")
 	
 	var direction: float = Input.get_axis("move_left_p" + str(number), "move_right_p" + str(number))
-	if direction:
-		velocity.x = direction * speed
-	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
+	if disable_input == false:
+		if direction:
+			velocity.x = direction * speed
+		else:
+			velocity.x = move_toward(velocity.x, 0, speed)
 	
 	if direction > 0:
 		flipped = false
@@ -56,12 +58,15 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	
-	var shoot = Input.is_action_just_pressed("attack_p" + str(number))
+	var shoot = Input.is_action_just_pressed("attack_p" + str(number)) and disable_input == false
 	if shoot:
 		shoot()
 		
-	if (sprite.animation == "jump" or sprite.animation == "landing" or sprite.animation.ends_with("shoot")) and sprite.is_playing():
+	if (sprite.sprite_frames.get_animation_loop(sprite.animation)) and sprite.is_playing():
+		# If the animation doesn't loop we should not interrupt it with another animation
 		pass
+	elif disable_input:
+		sprite.play("idle")
 	else:
 		if is_zero_approx(velocity.y):
 			if is_zero_approx(direction):
@@ -75,6 +80,7 @@ func _physics_process(delta: float) -> void:
 		
 		if shoot:
 			sprite.animation += "_shoot"
+	
 
 func shoot() -> void:
 	if can_shoot == false:

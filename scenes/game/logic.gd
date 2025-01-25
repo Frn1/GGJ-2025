@@ -15,6 +15,13 @@ var last_bubble_coords: Array = []
 var player_0: Player
 var player_1: Player
 
+@onready var pause_menu = $UI/PauseMenu
+@onready var game_ui = $UI/GameUI
+@onready var winner_ui = $UI/WinnerUI
+@onready var countdown_ui = $UI/CountdownUI
+@onready var countdown_timer = $CountdownTimer
+@onready var bubbles = $Bubbles
+
 signal bubble_collected
 
 func spawn_random_bubble() -> void:
@@ -26,7 +33,7 @@ func spawn_random_bubble() -> void:
 	var coord = spawn_coords.pick_random()
 	while spawn_coords.is_empty() == false:
 		var pos = level.meta.map_to_local(coord)
-		if $Bubbles.get_children().any(func (node: Node2D): return node.position == pos):
+		if bubbles.get_children().any(func (node: Node2D): return node.position == pos):
 			spawn_coords.erase(coord)
 			coord = spawn_coords.pick_random()
 		else:
@@ -35,7 +42,7 @@ func spawn_random_bubble() -> void:
 				last_bubble_coords.pop_front()
 			var bubble: Node2D = bubble_scene.instantiate()
 			bubble.position = pos
-			$Bubbles.add_child.call_deferred(bubble)
+			bubbles.add_child.call_deferred(bubble)
 			break
 		
 func spawn_player(number: int) -> void:
@@ -53,10 +60,10 @@ func spawn_player(number: int) -> void:
 		add_child(player)
 
 func player_won(number: int) -> void:
-	$UI/WinnerUI.format_text(number + 1)
+	winner_ui.format_text(number + 1)
 	var menu_timer = Timer.new()
 	# We add the timer to the tree to ensure it doesn't get paused later
-	$UI/WinnerUI.add_child(menu_timer)
+	winner_ui.add_child(menu_timer)
 	menu_timer.one_shot = true
 	menu_timer.timeout.connect(func(): get_tree().change_scene_to_file("res://scenes/main_menu.tscn"))
 	menu_timer.start(2)
@@ -65,15 +72,23 @@ func player_won(number: int) -> void:
 func _ready() -> void:
 	level = level_scene.instantiate()
 	add_child(level)
+	spawn_random_bubble()
+	spawn_random_bubble()
 	spawn_player(0)
 	spawn_player(1)
-	spawn_random_bubble()
-	spawn_random_bubble()
+	player_0.disable_input = true
+	player_1.disable_input = true
+	countdown_ui.play_countdown()
+	countdown_timer.start()
+	await countdown_timer.timeout
+	player_0.disable_input = false
+	player_1.disable_input = false
+	
 
 func _process(_delta: float) -> void:
 	if player_0.bubbles == bubbles_needed_to_win:
 		player_won(0)
 	elif player_1.bubbles == bubbles_needed_to_win:
 		player_won(1)
-	$UI/Game.player_0.text = str(player_0.bubbles)
-	$UI/Game.player_1.text = str(player_1.bubbles)
+	game_ui.player_0.text = str(player_0.bubbles)
+	game_ui.player_1.text = str(player_1.bubbles)
