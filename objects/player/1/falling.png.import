@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bk57my0iwsy1p"
-path="res://.godot/imported/land.png-f47b45b0412d9d79b5a6fa1b3b7004e4.ctex"
+uid="uid://c4eidyxoedkr8"
+path="res://.godot/imported/falling.png-9132e8f1ab024bc0c0e67a34ba75f1cd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://objects/player/0/land.png"
-dest_files=["res://.godot/imported/land.png-f47b45b0412d9d79b5a6fa1b3b7004e4.ctex"]
+source_file="res://objects/player/1/falling.png"
+dest_files=["res://.godot/imported/falling.png-9132e8f1ab024bc0c0e67a34ba75f1cd.ctex"]
 
 [params]
 

@@ -5,7 +5,7 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bd51y"]
 custom_solver_bias = 1.0
-size = Vector2(17, 63)
+size = Vector2(17, 64)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
@@ -14,12 +14,16 @@ safe_margin = 1.5
 script = ExtResource("1_lqea5")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.5, -20.5)
 sprite_frames = ExtResource("2_c3g0i")
-animation = &"jump"
+animation = &"running"
 autoplay = "idle"
 
+[node name="BulletSpawn" type="Marker2D" parent="Sprite"]
+position = Vector2(2.5, -2.5)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 4.5)
+position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_bd51y")
 
 [connection signal="bubble_collected" from="." to="." method="_on_bubble_collected"]
