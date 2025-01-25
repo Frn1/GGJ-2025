@@ -5,6 +5,8 @@ extends Node2D
 @export var bubble_scene: PackedScene = preload("res://objects/bubble.tscn")
 var level: Level
 
+@export var bubbles_needed_to_win: int = 10
+
 # Used to avoid repeating spawn positions
 var last_bubble_coords: Array = []
 
@@ -25,7 +27,6 @@ func spawn_random_bubble() -> void:
 			coord = spawn_coords.pick_random()
 		else:
 			last_bubble_coords.push_back(coord)
-			# Remove the extra coord now
 			while last_bubble_coords.size() > 2:
 				last_bubble_coords.pop_front()
 			var bubble: Node2D = bubble_scene.instantiate()
@@ -47,6 +48,16 @@ func spawn_player(number: int) -> void:
 			player_1 = player
 		add_child(player)
 
+func player_won(number: int) -> void:
+	$UI/WinnerUI.format_text(number + 1)
+	var menu_timer = Timer.new()
+	# We add the timer to the tree to ensure it doesn't get paused later
+	$UI/WinnerUI.add_child(menu_timer)
+	menu_timer.one_shot = true
+	menu_timer.timeout.connect(func(): get_tree().change_scene_to_file("res://scenes/main_menu.tscn"))
+	menu_timer.start(2)
+	get_tree().paused = true
+
 func _ready() -> void:
 	level = level_scene.instantiate()
 	add_child(level)
@@ -57,5 +68,9 @@ func _ready() -> void:
 	spawn_random_bubble()
 
 func _process(_delta: float) -> void:
+	if player_0.bubbles == bubbles_needed_to_win:
+		player_won(0)
+	elif player_1.bubbles == bubbles_needed_to_win:
+		player_won(1)
 	$UI/Game.player_0.text = str(player_0.bubbles)
 	$UI/Game.player_1.text = str(player_1.bubbles)
