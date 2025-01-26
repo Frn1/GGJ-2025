@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://icuob023cxxk"
-path="res://.godot/imported/ui_focus_change.wav-d0526914212d124e186733fc58555186.sample"
+path="res://.godot/imported/bubble_pop.wav-4b3b70a48adea2b6bea6c55bd270bfaa.sample"
 
 [deps]
 
-source_file="res://sfx/ui_focus_change.wav"
-dest_files=["res://.godot/imported/ui_focus_change.wav-d0526914212d124e186733fc58555186.sample"]
+source_file="res://sfx/bubble_pop.wav"
+dest_files=["res://.godot/imported/bubble_pop.wav-4b3b70a48adea2b6bea6c55bd270bfaa.sample"]
 
 [params]
 

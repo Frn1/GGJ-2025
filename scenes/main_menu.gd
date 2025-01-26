@@ -1,7 +1,6 @@
 extends Control
 
 func _ready() -> void:
-	get_viewport().gui_focus_changed.connect($UiFocusChange.play)
 	if OS.has_feature("web"):
 		$Items/Buttons/Quit.free()
 

@@ -1,12 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://its1rfbkygrf"]
+[gd_scene load_steps=7 format=3 uid="uid://its1rfbkygrf"]
 
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_dq8jc"]
 [ext_resource type="AudioStream" uid="uid://duetkcevlr0hq" path="res://music/menu.ogg" id="2_invmf"]
 [ext_resource type="Texture2D" uid="uid://mkjqunrinkic" path="res://scenes/main_menu/logo.png" id="3_iy8v5"]
-[ext_resource type="AudioStream" uid="uid://icuob023cxxk" path="res://sfx/ui_focus_change.wav" id="3_syk5u"]
-[ext_resource type="Texture2D" uid="uid://b0yehy834e3f1" path="res://scenes/main_menu/play.png" id="4_7tpw8"]
+[ext_resource type="Texture2D" uid="uid://b0yehy834e3f1" path="res://scenes/main_menu/play_button.png" id="4_7tpw8"]
 [ext_resource type="Texture2D" uid="uid://6ogifin02bt1" path="res://scenes/main_menu/background.png" id="4_nkp70"]
-[ext_resource type="Texture2D" uid="uid://x7emgl358rmy" path="res://scenes/main_menu/quit.png" id="5_trh5v"]
+[ext_resource type="Texture2D" uid="uid://x7emgl358rmy" path="res://scenes/main_menu/quit_button.png" id="5_trh5v"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -91,10 +90,6 @@ autoplay = true
 bus = &"BG"
 playback_type = 1
 parameters/looping = false
-
-[node name="UiFocusChange" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_syk5u")
-bus = &"SFX"
 
 [connection signal="pressed" from="Items/Buttons/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Items/Buttons/Quit" to="." method="_on_quit_pressed"]

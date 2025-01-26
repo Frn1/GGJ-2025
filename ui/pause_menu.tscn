@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dontxjg52bvb7"]
+[gd_scene load_steps=5 format=3 uid="uid://dontxjg52bvb7"]
 
 [ext_resource type="Script" path="res://ui/pause_menu.gd" id="1_k1hg0"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_berwx"]
-font_size = 64
+[ext_resource type="Texture2D" uid="uid://cpmjlewmoybcp" path="res://ui/pause_menu/paused_text.png" id="2_w02p7"]
+[ext_resource type="Texture2D" uid="uid://b70242flv6v4t" path="res://ui/pause_menu/resume_button.png" id="3_aya0o"]
+[ext_resource type="Texture2D" uid="uid://d07hikuw7pmry" path="res://ui/pause_menu/main_menu_button.png" id="4_fg8t4"]
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3
@@ -35,11 +35,11 @@ grow_vertical = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Paused" type="Label" parent="VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Paused"
-label_settings = SubResource("LabelSettings_berwx")
+texture = ExtResource("2_w02p7")
+stretch_mode = 2
 
 [node name="Buttons" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -47,19 +47,17 @@ size_flags_vertical = 4
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="Resume" type="Button" parent="VBoxContainer/Buttons"]
+[node name="Resume" type="TextureButton" parent="VBoxContainer/Buttons"]
 layout_mode = 2
 size_flags_vertical = 4
 mouse_default_cursor_shape = 2
-theme_override_font_sizes/font_size = 48
-text = "Resume"
+texture_normal = ExtResource("3_aya0o")
 metadata/_edit_use_anchors_ = true
 
-[node name="Main Menu" type="Button" parent="VBoxContainer/Buttons"]
+[node name="Main Menu" type="TextureButton" parent="VBoxContainer/Buttons"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
-theme_override_font_sizes/font_size = 48
-text = "Main Menu"
+texture_normal = ExtResource("4_fg8t4")
 
 [connection signal="pressed" from="VBoxContainer/Buttons/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="VBoxContainer/Buttons/Main Menu" to="." method="_on_main_menu_pressed"]
