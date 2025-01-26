@@ -93,7 +93,6 @@ func _ready() -> void:
 	await countdown_timer.timeout
 	player_0.disable_input = false
 	player_1.disable_input = false
-	
 
 func _process(_delta: float) -> void:
 	if player_0.bubbles == bubbles_needed_to_win:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dfpisuwwkekub"]
+[gd_scene load_steps=11 format=3 uid="uid://dfpisuwwkekub"]
 
 [ext_resource type="Script" path="res://scenes/game/logic.gd" id="1_6lxwd"]
 [ext_resource type="PackedScene" uid="uid://c2rc3lo3fg0bh" path="res://levels/test.tscn" id="2_73rq0"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bmg0jmf5uh33v" path="res://ui/countdown_ui.tscn" id="4_juhyd"]
 [ext_resource type="PackedScene" uid="uid://dm7m33k71i1gy" path="res://ui/winner_ui.tscn" id="4_tbawe"]
 [ext_resource type="PackedScene" uid="uid://csm3ltwmuiypi" path="res://ui/game_ui.tscn" id="5_3ltng"]
+[ext_resource type="PackedScene" uid="uid://d035e1g1rge3n" path="res://ui/screen_borders.tscn" id="8_gbbn0"]
 [ext_resource type="AudioStream" uid="uid://deeeikqgysnch" path="res://music/game_ambient.wav" id="8_hx7jp"]
 [ext_resource type="AudioStream" uid="uid://b31ornvio0e5k" path="res://music/game_combat.wav" id="9_1qoew"]
 
@@ -18,9 +19,7 @@ level_scene = ExtResource("2_73rq0")
 process_mode = 3
 script = ExtResource("3_h01ni")
 
-[node name="PauseMenu" parent="UI" instance=ExtResource("3_m536y")]
-visible = false
-mouse_filter = 2
+[node name="ScreenBorders" parent="UI" instance=ExtResource("8_gbbn0")]
 
 [node name="CountdownUI" parent="UI" instance=ExtResource("4_juhyd")]
 
@@ -28,6 +27,10 @@ mouse_filter = 2
 mouse_filter = 2
 
 [node name="GameUI" parent="UI" instance=ExtResource("5_3ltng")]
+mouse_filter = 2
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("3_m536y")]
+visible = false
 mouse_filter = 2
 
 [node name="Bubbles" type="Node" parent="."]
