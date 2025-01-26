@@ -1,0 +1,51 @@
+[gd_scene load_steps=10 format=3 uid="uid://dfpisuwwkekub"]
+
+[ext_resource type="Script" path="res://scenes/game/logic.gd" id="1_6lxwd"]
+[ext_resource type="PackedScene" uid="uid://c2rc3lo3fg0bh" path="res://levels/test.tscn" id="2_73rq0"]
+[ext_resource type="Script" path="res://scenes/game/ui.gd" id="3_h01ni"]
+[ext_resource type="PackedScene" uid="uid://dontxjg52bvb7" path="res://ui/pause_menu.tscn" id="3_m536y"]
+[ext_resource type="PackedScene" uid="uid://bmg0jmf5uh33v" path="res://ui/countdown_ui.tscn" id="4_juhyd"]
+[ext_resource type="PackedScene" uid="uid://dm7m33k71i1gy" path="res://ui/winner_ui.tscn" id="4_tbawe"]
+[ext_resource type="PackedScene" uid="uid://csm3ltwmuiypi" path="res://ui/game_ui.tscn" id="5_3ltng"]
+[ext_resource type="AudioStream" uid="uid://deeeikqgysnch" path="res://music/game_ambient.wav" id="8_hx7jp"]
+[ext_resource type="AudioStream" uid="uid://b31ornvio0e5k" path="res://music/game_combat.wav" id="9_1qoew"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_6lxwd")
+level_scene = ExtResource("2_73rq0")
+
+[node name="UI" type="CanvasLayer" parent="."]
+process_mode = 3
+script = ExtResource("3_h01ni")
+
+[node name="CountdownUI" parent="UI" instance=ExtResource("4_juhyd")]
+
+[node name="WinnerUI" parent="UI" instance=ExtResource("4_tbawe")]
+mouse_filter = 2
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("3_m536y")]
+visible = false
+
+[node name="GameUI" parent="UI" instance=ExtResource("5_3ltng")]
+
+[node name="Bubbles" type="Node" parent="."]
+
+[node name="AmbientMusic" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("8_hx7jp")
+autoplay = true
+bus = &"BG"
+playback_type = 1
+
+[node name="CombatMusic" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("9_1qoew")
+bus = &"BG 2"
+playback_type = 1
+
+[node name="CountdownTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="bubble_collected" from="." to="." method="spawn_random_bubble"]
+[connection signal="unpause" from="UI/PauseMenu" to="UI" method="unpause_game"]

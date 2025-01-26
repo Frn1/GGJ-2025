@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://its1rfbkygrf"]
+[gd_scene load_steps=8 format=3 uid="uid://its1rfbkygrf"]
 
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_dq8jc"]
 [ext_resource type="AudioStream" uid="uid://duetkcevlr0hq" path="res://music/menu.ogg" id="2_invmf"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_vkqbu"]
-font_size = 128
+[ext_resource type="Texture2D" uid="uid://mkjqunrinkic" path="res://scenes/main_menu/logo.png" id="3_iy8v5"]
+[ext_resource type="AudioStream" uid="uid://icuob023cxxk" path="res://sfx/ui_focus_change.wav" id="3_syk5u"]
+[ext_resource type="Texture2D" uid="uid://b0yehy834e3f1" path="res://scenes/main_menu/play.png" id="4_7tpw8"]
+[ext_resource type="Texture2D" uid="uid://6ogifin02bt1" path="res://scenes/main_menu/background.png" id="4_nkp70"]
+[ext_resource type="Texture2D" uid="uid://x7emgl358rmy" path="res://scenes/main_menu/quit.png" id="5_trh5v"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -15,45 +17,85 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dq8jc")
 
-[node name="Items" type="VBoxContainer" parent="."]
+[node name="BG" type="AspectRatioContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 10
-alignment = 1
+ratio = 1.7778
+stretch_mode = 3
+alignment_vertical = 2
 
-[node name="Title" type="Label" parent="Items"]
+[node name="Texture" type="TextureRect" parent="BG"]
+texture_filter = 1
+clip_contents = true
 layout_mode = 2
-size_flags_horizontal = 4
-text = "Bubble war"
-label_settings = SubResource("LabelSettings_vkqbu")
-metadata/_edit_use_anchors_ = true
+texture = ExtResource("4_nkp70")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Items" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Logo" type="TextureRect" parent="Items"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("3_iy8v5")
+stretch_mode = 5
 
 [node name="Buttons" type="HBoxContainer" parent="Items"]
 layout_mode = 2
-size_flags_horizontal = 4
-theme_override_constants/separation = 30
+size_flags_vertical = 3
+theme_override_constants/separation = 80
 alignment = 1
 
-[node name="Play" type="Button" parent="Items/Buttons"]
+[node name="Empty" type="Control" parent="Items/Buttons"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 64
-text = "Play"
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Play" type="TextureButton" parent="Items/Buttons"]
+layout_mode = 2
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("4_7tpw8")
 metadata/_edit_use_anchors_ = true
 
-[node name="Quit" type="Button" parent="Items/Buttons"]
+[node name="Quit" type="TextureButton" parent="Items/Buttons"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 64
-text = "Quit"
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_trh5v")
 metadata/_edit_use_anchors_ = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Empty3" type="Control" parent="Items/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Empty" type="Control" parent="Items"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_invmf")
 autoplay = true
-parameters/looping = true
+bus = &"BG"
+playback_type = 1
+parameters/looping = false
+
+[node name="UiFocusChange" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_syk5u")
+bus = &"SFX"
 
 [connection signal="pressed" from="Items/Buttons/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Items/Buttons/Quit" to="." method="_on_quit_pressed"]
+[connection signal="finished" from="Music" to="." method="_on_music_finished"]

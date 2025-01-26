@@ -1,6 +1,7 @@
 extends Control
 
 func _ready() -> void:
+	get_viewport().gui_focus_changed.connect($UiFocusChange.play)
 	if OS.has_feature("web"):
 		$Items/Buttons/Quit.free()
 
@@ -17,3 +18,20 @@ func _on_play_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
+
+var music_tone_raised = false
+var times_looped = 0
+
+func _on_music_finished() -> void:
+	# Don't loop more than 3 times on the menu
+	if times_looped >= 3:
+		return
+	if music_tone_raised:
+		$Music.pitch_scale = 1.00
+		music_tone_raised = false
+	else: 
+		# Lower pitch by 1 semitone (according to Audacity)
+		$Music.pitch_scale = 1.00 - 0.05613
+		music_tone_raised = true
+	times_looped += 1
+	$Music.play()

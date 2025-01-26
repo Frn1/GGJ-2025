@@ -21,6 +21,8 @@ var player_1: Player
 @onready var countdown_ui = $UI/CountdownUI
 @onready var countdown_timer = $CountdownTimer
 @onready var bubbles = $Bubbles
+@onready var combat_music = $CombatMusic
+@onready var ambient_music = $AmbientMusic
 
 signal bubble_collected
 
@@ -59,13 +61,19 @@ func spawn_player(number: int) -> void:
 			player_1 = player
 		add_child(player)
 
+func go_to_menu() -> void:
+	var volume_tween = create_tween()
+	volume_tween.tween_method(combat_music.set_volume_db, 0.0, -80.0, 0.5)
+	volume_tween.tween_method(ambient_music.set_volume_db, 0.0, -80.0, 0.5)
+	TransitionController.change_to_file("res://scenes/main_menu.tscn")
+
 func player_won(number: int) -> void:
 	winner_ui.format_text(number + 1)
 	var menu_timer = Timer.new()
 	# We add the timer to the tree to ensure it doesn't get paused later
 	winner_ui.add_child(menu_timer)
 	menu_timer.one_shot = true
-	menu_timer.timeout.connect(func(): get_tree().change_scene_to_file("res://scenes/main_menu.tscn"))
+	menu_timer.timeout.connect(go_to_menu)
 	menu_timer.start(2)
 	get_tree().paused = true
 
@@ -78,8 +86,10 @@ func _ready() -> void:
 	spawn_player(1)
 	player_0.disable_input = true
 	player_1.disable_input = true
-	countdown_ui.play_countdown()
+	await TransitionController.transition_done
+	combat_music.play()
 	countdown_timer.start()
+	countdown_ui.play_countdown()
 	await countdown_timer.timeout
 	player_0.disable_input = false
 	player_1.disable_input = false

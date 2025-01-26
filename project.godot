@@ -15,6 +15,12 @@ run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="res://bus_layout.tres"
+driver/mix_rate=48000
+driver/mix_rate.web=44100
+
 [autoload]
 
 TransitionController="*res://ui/transition_controller.tscn"
