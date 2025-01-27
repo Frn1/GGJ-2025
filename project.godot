@@ -102,8 +102,6 @@ move_right_p1={
 
 [physics]
 
-common/physics_ticks_per_second=120
-common/max_physics_steps_per_frame=16
 2d/default_gravity=1000.0
 
 [rendering]
@@ -111,6 +109,8 @@ common/max_physics_steps_per_frame=16
 textures/canvas_textures/default_texture_filter=0
 textures/vram_compression/import_s3tc_bptc=true
 textures/vram_compression/import_etc2_astc=true
-textures/webp_compression/compression_method=3
-textures/webp_compression/lossless_compression_factor=20.0
+textures/webp_compression/compression_method=1
+textures/default_filters/anisotropic_filtering_level=0
+textures/decals/filter=0
+textures/light_projectors/filter=0
 2d/snap/snap_2d_transforms_to_pixel=true

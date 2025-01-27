@@ -19,7 +19,7 @@ func _ready() -> void:
 	bg_bus_unpaused_db = AudioServer.get_bus_volume_db(bg_bus_id)
 	bg_2_bus_unpaused_db = AudioServer.get_bus_volume_db(bg_2_bus_id)
 	pass
-
+	
 func toggle_pause():
 	if get_tree().paused == false:
 		pause_game()
