@@ -253,12 +253,14 @@ tracks/9/keys = {
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fse20"]
+resource_local_to_scene = true
 _data = {
 "RESET": SubResource("Animation_w53ss"),
 "countdown": SubResource("Animation_ipgf4")
 }
 
 [sub_resource type="LabelSettings" id="LabelSettings_f0dsi"]
+resource_local_to_scene = true
 font_size = 256
 
 [node name="CountdownUI" type="Control"]
