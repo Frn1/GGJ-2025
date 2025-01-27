@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cc510jph0wo0y"
-path="res://.godot/imported/ShootP2-Sheet.png-96dd16361dc3aad432efef7574716b7a.ctex"
+uid="uid://vbsb0na8x2qx"
+path="res://.godot/imported/death.png-f86b57ea105850493c2a04860ca29841.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://objects/player/1/ShootP2-Sheet.png"
-dest_files=["res://.godot/imported/ShootP2-Sheet.png-96dd16361dc3aad432efef7574716b7a.ctex"]
+source_file="res://objects/player/1/death.png"
+dest_files=["res://.godot/imported/death.png-f86b57ea105850493c2a04860ca29841.ctex"]
 
 [params]
 

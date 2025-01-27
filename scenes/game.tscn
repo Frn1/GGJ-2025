@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dfpisuwwkekub"]
+[gd_scene load_steps=12 format=3 uid="uid://dfpisuwwkekub"]
 
 [ext_resource type="Script" path="res://scenes/game/logic.gd" id="1_6lxwd"]
 [ext_resource type="PackedScene" uid="uid://c2rc3lo3fg0bh" path="res://levels/test.tscn" id="2_73rq0"]
@@ -10,10 +10,24 @@
 [ext_resource type="PackedScene" uid="uid://d035e1g1rge3n" path="res://ui/screen_borders.tscn" id="8_gbbn0"]
 [ext_resource type="AudioStream" uid="uid://deeeikqgysnch" path="res://music/game_ambient.wav" id="8_hx7jp"]
 [ext_resource type="AudioStream" uid="uid://b31ornvio0e5k" path="res://music/game_combat.wav" id="9_1qoew"]
+[ext_resource type="Texture2D" uid="uid://cnxm48oinhjmf" path="res://levels/background.png" id="11_b0mka"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_6lxwd")
 level_scene = ExtResource("2_73rq0")
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -128
+
+[node name="Texture" type="TextureRect" parent="Background"]
+modulate = Color(0.560955, 0.560955, 0.560955, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_b0mka")
+stretch_mode = 6
 
 [node name="UI" type="CanvasLayer" parent="."]
 process_mode = 3
@@ -27,6 +41,8 @@ script = ExtResource("3_h01ni")
 mouse_filter = 2
 
 [node name="GameUI" parent="UI" instance=ExtResource("5_3ltng")]
+anchors_preset = 15
+grow_vertical = 2
 mouse_filter = 2
 
 [node name="PauseMenu" parent="UI" instance=ExtResource("3_m536y")]
@@ -52,6 +68,20 @@ playback_type = 1
 wait_time = 3.0
 one_shot = true
 
+[node name="BubbleAmountTimers" type="Node" parent="."]
+
+[node name="5" type="Timer" parent="BubbleAmountTimers"]
+wait_time = 30.0
+
+[node name="3" type="Timer" parent="BubbleAmountTimers"]
+wait_time = 60.0
+
+[node name="GameTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 90.0
+one_shot = true
+
 [connection signal="bubble_collected" from="." to="." method="spawn_random_bubble"]
 [connection signal="go_to_menu" from="UI/PauseMenu" to="." method="go_to_menu"]
 [connection signal="unpause" from="UI/PauseMenu" to="UI" method="unpause_game"]
+[connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]

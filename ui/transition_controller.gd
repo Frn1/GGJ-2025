@@ -18,10 +18,12 @@ func change_to_scene(scene: PackedScene) -> void:
 	# Set the bus layout to reset any modifications done by the last scene
 	AudioServer.set_bus_layout(original_bus_layout)
 	anim_player.play("enter")
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	await anim_player.animation_finished
 	get_tree().change_scene_to_packed(scene)
 	get_tree().paused = true
 	anim_player.play("exit")
 	await anim_player.animation_finished
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	get_tree().paused = false
 	transition_done.emit()

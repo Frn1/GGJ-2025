@@ -17,7 +17,7 @@ jump_velocity = 500.0
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0.5, -20.5)
 sprite_frames = ExtResource("2_c3g0i")
-animation = &"idle"
+animation = &"falling_shoot"
 autoplay = "idle"
 
 [node name="BulletSpawn" type="Marker2D" parent="Sprite"]
@@ -31,5 +31,5 @@ shape = SubResource("RectangleShape2D_bd51y")
 one_shot = true
 
 [connection signal="bubble_gained" from="." to="." method="_on_bubble_gained"]
-[connection signal="bubble_lost" from="." to="." method="_on_bubble_lost"]
+[connection signal="hit" from="." to="." method="_on_hit"]
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]

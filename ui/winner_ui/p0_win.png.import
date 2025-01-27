@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dp7guyk2cweu7"
-path="res://.godot/imported/MidAir_ShootP2-Sheet.png-25300f7763b201106729f7744faeb083.ctex"
+uid="uid://cwrd8y7h7b4mk"
+path="res://.godot/imported/p0_win.png-2043b32be229e041cfc42fdb4a1c054d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://objects/player/1/MidAir_ShootP2-Sheet.png"
-dest_files=["res://.godot/imported/MidAir_ShootP2-Sheet.png-25300f7763b201106729f7744faeb083.ctex"]
+source_file="res://ui/winner_ui/p0_win.png"
+dest_files=["res://.godot/imported/p0_win.png-2043b32be229e041cfc42fdb4a1c054d.ctex"]
 
 [params]
 

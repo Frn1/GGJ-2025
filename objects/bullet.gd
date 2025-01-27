@@ -22,8 +22,8 @@ func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		if body == player:
 			return
-		if body.bubbles > 0:
-			body.bubble_lost.emit()
-			player.bubble_gained.emit()
+		#if body.bubbles > 0:
+			#player.bubble_gained.emit()
+		body.hit.emit()
 	hit = true
 	queue_free()

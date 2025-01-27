@@ -10,7 +10,7 @@ func _on_play_pressed() -> void:
 	# cargados, instancio la escena "game", la modifico y la vuelvo a empaquetar
 	var template_game_scene = preload("res://scenes/game.tscn")
 	var game = template_game_scene.instantiate()
-	game.level_scene = preload("res://levels/level_1.tscn")
+	game.level_scene = preload("res://levels/level_2_alt2.tscn")
 	var new_game_scene = PackedScene.new()
 	new_game_scene.pack(game)
 	TransitionController.change_to_scene(new_game_scene)

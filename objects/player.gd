@@ -13,15 +13,16 @@ extends CharacterBody2D
 @export var bubbles: int = 0
 
 signal bubble_gained
-signal bubble_lost
+signal hit
 
-@onready var sprite = $Sprite
+@onready var sprite: AnimatedSprite2D = $Sprite
 @onready var bullet_spawn = $Sprite/BulletSpawn
 @onready var reload_timer = $ReloadTimer
 
 var flipped: bool = false
 var was_on_floor: bool = is_on_floor()
 var can_shoot = true
+var was_hit = false
 
 func _ready() -> void:
 	sprite.sprite_frames = load("res://objects/player/{0}/animations.tres".format([number]))
@@ -32,16 +33,18 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+		if was_hit:
+			velocity.x *= -0.25
 		
-	if is_on_floor() and was_on_floor == false:
+	if is_on_floor() and not was_on_floor:
 		sprite.play("landing")
 		
-	if Input.is_action_just_pressed("jump_p" + str(number)) and is_on_floor() and disable_input == false:
+	if Input.is_action_just_pressed("jump_p" + str(number)) and is_on_floor() and not disable_input:
 		velocity.y = -jump_velocity
 		sprite.play("jump")
 	
 	var direction: float = Input.get_axis("move_left_p" + str(number), "move_right_p" + str(number))
-	if disable_input == false:
+	if not disable_input and sprite.animation != "hit":
 		if direction:
 			velocity.x = direction * speed
 		else:
@@ -58,11 +61,11 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	
-	var shoot = Input.is_action_just_pressed("attack_p" + str(number)) and disable_input == false
-	if shoot:
-		shoot()
-		
-	if sprite.sprite_frames.get_animation_loop(sprite.animation) == false and sprite.is_playing():
+	var shoot = Input.is_action_just_pressed("attack_p" + str(number)) and not disable_input
+	
+	if was_hit:
+		sprite.play("hit")
+	elif sprite.sprite_frames.get_animation_loop(sprite.animation) == false and sprite.is_playing():
 		# If the animation doesn't loop we should not interrupt it with another animation
 		pass
 	elif disable_input:
@@ -78,12 +81,17 @@ func _physics_process(delta: float) -> void:
 		elif velocity.y < 0:
 			sprite.play("falling")
 		
-		if shoot:
+		if shoot and can_shoot:
 			sprite.animation += "_shoot"
 	
+	if shoot:
+		shoot()
+	
+	if was_hit:
+		was_hit = false
 
 func shoot() -> void:
-	if can_shoot == false:
+	if not can_shoot:
 		return
 	var bullet: Bullet = bullet_scene.instantiate()
 	get_parent().add_child(bullet)
@@ -98,8 +106,10 @@ func shoot() -> void:
 func _on_bubble_gained() -> void:
 	bubbles += 1
 
-func _on_bubble_lost() -> void:
-	bubbles -= 1
+func _on_hit() -> void:
+	if bubbles > 0:
+		bubbles -= 1
+	was_hit = true
 
 func _on_reload_timer_timeout() -> void:
 	can_shoot = true

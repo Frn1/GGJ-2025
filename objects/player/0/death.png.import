@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://py34teovhymg"
-path="res://.godot/imported/MidAirP2.png-c2f6ca93844b5fbf740d05715b01117c.ctex"
+uid="uid://dxn42nyqyc4gn"
+path="res://.godot/imported/death.png-961570500e5a09a978ff953881997114.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://objects/player/1/MidAirP2.png"
-dest_files=["res://.godot/imported/MidAirP2.png-c2f6ca93844b5fbf740d05715b01117c.ctex"]
+source_file="res://objects/player/0/death.png"
+dest_files=["res://.godot/imported/death.png-961570500e5a09a978ff953881997114.ctex"]
 
 [params]
 
