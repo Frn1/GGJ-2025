@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bb1xlj7seedgw"]
+
+[ext_resource type="FontFile" uid="uid://cuvpiocy80hlj" path="res://ui/fonts/Bubblez.otf" id="1_jgabq"]
+
+[resource]
+Label/fonts/font = ExtResource("1_jgabq")

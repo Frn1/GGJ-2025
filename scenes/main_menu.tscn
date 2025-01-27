@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://its1rfbkygrf"]
+[gd_scene load_steps=8 format=3 uid="uid://its1rfbkygrf"]
 
+[ext_resource type="Theme" uid="uid://bb1xlj7seedgw" path="res://ui/theme.tres" id="1_51lul"]
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_dq8jc"]
 [ext_resource type="AudioStream" uid="uid://duetkcevlr0hq" path="res://music/menu.ogg" id="2_invmf"]
 [ext_resource type="Texture2D" uid="uid://mkjqunrinkic" path="res://scenes/main_menu/logo.png" id="3_iy8v5"]
@@ -14,6 +15,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_51lul")
 script = ExtResource("1_dq8jc")
 
 [node name="BG" type="AspectRatioContainer" parent="."]

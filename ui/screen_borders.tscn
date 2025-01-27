@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://d035e1g1rge3n"]
+[gd_scene load_steps=2 format=3 uid="uid://d035e1g1rge3n"]
+
+[ext_resource type="Theme" uid="uid://bb1xlj7seedgw" path="res://ui/theme.tres" id="1_s1461"]
 
 [node name="ScreenBorders" type="Control"]
 layout_mode = 3
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_s1461")
 
 [node name="Left" type="ColorRect" parent="."]
 layout_mode = 1

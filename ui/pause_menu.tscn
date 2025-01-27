@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dontxjg52bvb7"]
+[gd_scene load_steps=6 format=3 uid="uid://dontxjg52bvb7"]
 
 [ext_resource type="Script" path="res://ui/pause_menu.gd" id="1_k1hg0"]
+[ext_resource type="Theme" uid="uid://bb1xlj7seedgw" path="res://ui/theme.tres" id="1_lju46"]
 [ext_resource type="Texture2D" uid="uid://cpmjlewmoybcp" path="res://ui/pause_menu/paused_text.png" id="2_w02p7"]
 [ext_resource type="Texture2D" uid="uid://b70242flv6v4t" path="res://ui/pause_menu/resume_button.png" id="3_aya0o"]
 [ext_resource type="Texture2D" uid="uid://d07hikuw7pmry" path="res://ui/pause_menu/main_menu_button.png" id="4_fg8t4"]
@@ -13,6 +14,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+theme = ExtResource("1_lju46")
 script = ExtResource("1_k1hg0")
 
 [node name="Overlay" type="ColorRect" parent="."]
