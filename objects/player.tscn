@@ -12,6 +12,7 @@ collision_layer = 2
 collision_mask = 5
 safe_margin = 1.5
 script = ExtResource("1_lqea5")
+disable_input = true
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0.5, -20.5)

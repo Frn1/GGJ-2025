@@ -8,6 +8,7 @@ extends CharacterBody2D
 
 @export var speed = 300.0
 @export var jump_velocity = 400.0
+@export_custom(PROPERTY_HINT_NONE, "suffix:s") var coyote_time: float = 0.1
 
 @export var disable_input: bool = false
 @export var bubbles: int = 0
@@ -20,9 +21,11 @@ signal hit
 @onready var reload_timer = $ReloadTimer
 
 var flipped: bool = false
-var was_on_floor: bool = is_on_floor()
+var enable_coyote_time = false
+var coyote_time_passed = 0.0
 var can_shoot = true
 var was_hit = false
+var was_on_floor = true
 
 func _ready() -> void:
 	sprite.sprite_frames = load("res://objects/player/{0}/animations.tres".format([number]))
@@ -35,12 +38,19 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 		if was_hit:
 			velocity.x *= -0.25
-		
+	
+	if enable_coyote_time:
+		coyote_time_passed += delta
+	
 	if is_on_floor() and not was_on_floor:
 		sprite.play("landing")
-		
-	if Input.is_action_just_pressed("jump_p" + str(number)) and is_on_floor() and not disable_input:
+	
+	var can_jump = is_on_floor() or (enable_coyote_time and coyote_time_passed < coyote_time)
+	var has_jumped = Input.is_action_just_pressed("jump_p" + str(number)) and can_jump and not disable_input
+	if has_jumped:
 		velocity.y = -jump_velocity
+		coyote_time_passed = 0
+		enable_coyote_time = false
 		sprite.play("jump")
 	
 	var direction: float = Input.get_axis("move_left_p" + str(number), "move_right_p" + str(number))
@@ -89,6 +99,14 @@ func _physics_process(delta: float) -> void:
 	
 	if was_hit:
 		was_hit = false
+	
+	if is_on_floor():
+		coyote_time_passed = 0
+		enable_coyote_time = false
+	elif was_on_floor and not is_on_floor() and not has_jumped:
+		coyote_time_passed = 0
+		enable_coyote_time = true
+	
 
 func shoot() -> void:
 	if not can_shoot:

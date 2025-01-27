@@ -104,6 +104,7 @@ _data = {
 [node name="Game" type="Node2D"]
 script = ExtResource("1_6lxwd")
 level_scene = ExtResource("2_73rq0")
+bubbles_at_the_same_time = 4
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -128
@@ -159,15 +160,18 @@ one_shot = true
 
 [node name="BubbleAmountTimers" type="Node" parent="."]
 
-[node name="5" type="Timer" parent="BubbleAmountTimers"]
+[node name="3" type="Timer" parent="BubbleAmountTimers"]
 wait_time = 30.0
 
-[node name="3" type="Timer" parent="BubbleAmountTimers"]
+[node name="2" type="Timer" parent="BubbleAmountTimers"]
 wait_time = 60.0
+
+[node name="1" type="Timer" parent="BubbleAmountTimers"]
+wait_time = 80.0
 
 [node name="GameTimer" type="Timer" parent="."]
 process_callback = 0
-wait_time = 90.0
+wait_time = 100.0
 one_shot = true
 
 [node name="ExitAnimation" type="AnimationPlayer" parent="."]

@@ -92,7 +92,9 @@ var timer_ran = false
 func calculate_time_to_show() -> String:
 	if game_timer.is_stopped():
 		if timer_ran: return "0"
-		else: return str(ceil(game_timer.wait_time))
+		else: 
+			if game_timer.wait_time > 99: return "99"
+			else: return str(ceil(game_timer.wait_time))
 	else:
 		timer_ran = true
 	if game_timer.wait_time > 99:
