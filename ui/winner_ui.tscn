@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dm7m33k71i1gy"]
+[gd_scene load_steps=12 format=3 uid="uid://dm7m33k71i1gy"]
 
 [ext_resource type="Theme" uid="uid://bb1xlj7seedgw" path="res://ui/theme.tres" id="1_bv7m7"]
 [ext_resource type="Script" path="res://ui/winner_ui.gd" id="1_hf5bg"]
 [ext_resource type="Texture2D" uid="uid://cwrd8y7h7b4mk" path="res://ui/winner_ui/p0_win.png" id="3_2gaog"]
+[ext_resource type="AudioStream" uid="uid://bgbdf18d12lgf" path="res://ui/winner_ui/game_end.wav" id="3_ws8ma"]
 [ext_resource type="Texture2D" uid="uid://bw805w7bfdvj2" path="res://ui/winner_ui/p1_win.png" id="4_nhkop"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_iifub"]
@@ -99,45 +100,6 @@ tracks/6/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_5puv1"]
-resource_name = "tie"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Control:anchor_top")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(-2, 1),
-"update": 0,
-"values": [-1.0, 0.5]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Control/Label:text")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": ["It's a tie!"]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Control/Label:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="Animation" id="Animation_87tmo"]
 resource_name = "p0_win"
 tracks/0/type = "value"
@@ -192,6 +154,45 @@ tracks/1/keys = {
 "values": [0.0, 0.8]
 }
 
+[sub_resource type="Animation" id="Animation_5puv1"]
+resource_name = "tie"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:anchor_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [-1.0, 0.5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/Label:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["It's a tie!"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/Label:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f37ij"]
 _data = {
 "RESET": SubResource("Animation_glris"),
@@ -210,8 +211,12 @@ grow_vertical = 2
 theme = ExtResource("1_bv7m7")
 script = ExtResource("1_hf5bg")
 
+[node name="GameEnd" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ws8ma")
+
 [node name="Control" type="Control" parent="."]
 layout_mode = 1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -245,7 +250,6 @@ vertical_alignment = 1
 libraries = {
 "": SubResource("AnimationLibrary_f37ij")
 }
-movie_quit_on_finish = true
 
 [node name="P0Win" type="TextureRect" parent="."]
 visible = false

@@ -27,6 +27,7 @@ var player_1: Player
 @onready var combat_music = $CombatMusic
 @onready var ambient_music = $AmbientMusic
 @onready var game_timer = $GameTimer
+@onready var exit_anim = $ExitAnimation
 
 signal bubble_collected
 
@@ -69,20 +70,19 @@ func spawn_player(number: int) -> void:
 		add_child(player)
 
 func go_to_menu() -> void:
-	var volume_tween = create_tween()
-	volume_tween.tween_method(combat_music.set_volume_db, 0.0, -80.0, 0.5)
-	volume_tween.tween_method(ambient_music.set_volume_db, 0.0, -80.0, 0.5)
+	exit_anim.play("exit")
 	TransitionController.change_to_file("res://scenes/main_menu.tscn")
 
 func player_won(winner: int) -> void:
-	game_timer.paused = true
+	exit_anim.play("battle_end")
 	winner_ui.show_result(winner)
 	var menu_timer = Timer.new()
 	# We add the timer to the tree to ensure it doesn't get paused later
 	winner_ui.add_child(menu_timer)
 	menu_timer.one_shot = true
-	menu_timer.timeout.connect(go_to_menu)
-	menu_timer.start(2)
+	menu_timer.timeout.connect(TransitionController.change_to_file.bindv(["res://scenes/main_menu.tscn"]))
+	menu_timer.start(3)
+	game_timer.paused = true
 	player_0.disable_input = true
 	player_1.disable_input = true
 	get_tree().paused = true

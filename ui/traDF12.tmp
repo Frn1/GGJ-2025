@@ -1,0 +1,85 @@
+[gd_scene load_steps=16 format=3 uid="uid://bbue2rcm4utj4"]
+
+[ext_resource type="Script" path="res://ui/transition_controller.gd" id="1_ty67n"]
+[ext_resource type="AudioStream" uid="uid://bjkxqef3q8s6o" path="res://sfx/scene_transition.wav" id="2_hcv2u"]
+[ext_resource type="AnimationLibrary" uid="uid://cucaot5dylq7g" path="res://ui/transition_controller/animation.tres" id="2_ysfob"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bm5d7"]
+animation = &"enter"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_al0qo"]
+animation = &"exit"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7j30b"]
+animation = &"loading"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7gnt6"]
+animation = &"loading"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nfyid"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j82i6"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"done_loading"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vyyv3"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mcxs8"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ndvgv"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tkkbw"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"done_loading"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xqnua"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_5acuo"]
+reset_ends = true
+states/End/position = Vector2(894, 100)
+states/Start/position = Vector2(201, 100)
+states/enter/node = SubResource("AnimationNodeAnimation_bm5d7")
+states/enter/position = Vector2(382, 100)
+states/exit/node = SubResource("AnimationNodeAnimation_al0qo")
+states/exit/position = Vector2(729, 100)
+states/loading/node = SubResource("AnimationNodeAnimation_7gnt6")
+states/loading/position = Vector2(529, 100)
+"states/loading 2/node" = SubResource("AnimationNodeAnimation_7j30b")
+"states/loading 2/position" = Vector2(529, 203)
+transitions = ["enter", "loading", SubResource("AnimationNodeStateMachineTransition_nfyid"), "loading", "exit", SubResource("AnimationNodeStateMachineTransition_j82i6"), "exit", "End", SubResource("AnimationNodeStateMachineTransition_vyyv3"), "loading", "loading 2", SubResource("AnimationNodeStateMachineTransition_mcxs8"), "loading 2", "loading", SubResource("AnimationNodeStateMachineTransition_ndvgv"), "loading 2", "exit", SubResource("AnimationNodeStateMachineTransition_tkkbw"), "Start", "enter", SubResource("AnimationNodeStateMachineTransition_xqnua")]
+graph_offset = Vector2(-56, -20)
+
+[node name="TransitionController" type="CanvasLayer"]
+process_mode = 3
+layer = 128
+script = ExtResource("1_ty67n")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": ExtResource("2_ysfob")
+}
+
+[node name="TransitionSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_hcv2u")
+
+[node name="Curtain" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_5acuo")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/done_loading = false

@@ -5,6 +5,11 @@ func _ready() -> void:
 		$Items/Buttons/Quit.free()
 
 func _on_play_pressed() -> void:
+	$Items.process_mode = Node.PROCESS_MODE_DISABLED
+	$CutsceneTransition.play("transition")
+	await $CutsceneTransition.animation_finished
+	$Cutscene.animate()
+	await $Cutscene.cutscene_done
 	# TODO: Encontrar una mejor manera de cargar el nivel
 	# Como cambiar la escena hace que se libere todos los nodos actualmente
 	# cargados, instancio la escena "game", la modifico y la vuelvo a empaquetar
@@ -13,7 +18,7 @@ func _on_play_pressed() -> void:
 	game.level_scene = preload("res://levels/level_2_alt2.tscn")
 	var new_game_scene = PackedScene.new()
 	new_game_scene.pack(game)
-	TransitionController.change_to_scene(new_game_scene)
+	TransitionController.change_to_scene_no_start(new_game_scene)
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()

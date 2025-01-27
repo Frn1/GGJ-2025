@@ -61,7 +61,7 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	
-	var shoot = Input.is_action_just_pressed("attack_p" + str(number)) and not disable_input
+	var has_shot = Input.is_action_just_pressed("attack_p" + str(number)) and not disable_input
 	
 	if was_hit:
 		sprite.play("hit")
@@ -81,10 +81,10 @@ func _physics_process(delta: float) -> void:
 		elif velocity.y < 0:
 			sprite.play("falling")
 		
-		if shoot and can_shoot:
+		if has_shot and can_shoot:
 			sprite.animation += "_shoot"
 	
-	if shoot:
+	if has_shot:
 		shoot()
 	
 	if was_hit:

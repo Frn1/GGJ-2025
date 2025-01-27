@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dfpisuwwkekub"]
+[gd_scene load_steps=16 format=3 uid="uid://dfpisuwwkekub"]
 
 [ext_resource type="Script" path="res://scenes/game/logic.gd" id="1_6lxwd"]
 [ext_resource type="PackedScene" uid="uid://c2rc3lo3fg0bh" path="res://levels/test.tscn" id="2_73rq0"]
@@ -8,9 +8,98 @@
 [ext_resource type="PackedScene" uid="uid://dm7m33k71i1gy" path="res://ui/winner_ui.tscn" id="4_tbawe"]
 [ext_resource type="PackedScene" uid="uid://csm3ltwmuiypi" path="res://ui/game_ui.tscn" id="5_3ltng"]
 [ext_resource type="PackedScene" uid="uid://d035e1g1rge3n" path="res://ui/screen_borders.tscn" id="8_gbbn0"]
-[ext_resource type="AudioStream" uid="uid://deeeikqgysnch" path="res://music/game_ambient.wav" id="8_hx7jp"]
-[ext_resource type="AudioStream" uid="uid://b31ornvio0e5k" path="res://music/game_combat.wav" id="9_1qoew"]
+[ext_resource type="AudioStream" uid="uid://deeeikqgysnch" path="res://scenes/game/ambient.wav" id="8_hx7jp"]
+[ext_resource type="AudioStream" uid="uid://b31ornvio0e5k" path="res://scenes/game/combat.wav" id="9_1qoew"]
 [ext_resource type="Texture2D" uid="uid://cnxm48oinhjmf" path="res://levels/background.png" id="11_b0mka"]
+
+[sub_resource type="Animation" id="Animation_pd60d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AmbientMusic:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CombatMusic:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_j4but"]
+resource_name = "battle_end"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AmbientMusic:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 3, 3.5),
+"transitions": PackedFloat32Array(1, 0.5, 1, 0.5),
+"update": 0,
+"values": [0.0, -8.0, -8.0, -80.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CombatMusic:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 3, 3.5),
+"transitions": PackedFloat32Array(1, 0.5, 1, 0.5),
+"update": 0,
+"values": [0.0, -16.0, -16.0, -80.0]
+}
+
+[sub_resource type="Animation" id="Animation_1rmtk"]
+resource_name = "exit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AmbientMusic:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [0.0, -80.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CombatMusic:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [0.0, -80.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7fcyn"]
+_data = {
+"RESET": SubResource("Animation_pd60d"),
+"battle_end": SubResource("Animation_j4but"),
+"exit": SubResource("Animation_1rmtk")
+}
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_6lxwd")
@@ -78,8 +167,14 @@ wait_time = 60.0
 
 [node name="GameTimer" type="Timer" parent="."]
 process_callback = 0
-wait_time = 90.0
+wait_time = 10.0
 one_shot = true
+
+[node name="ExitAnimation" type="AnimationPlayer" parent="."]
+process_mode = 3
+libraries = {
+"": SubResource("AnimationLibrary_7fcyn")
+}
 
 [connection signal="bubble_collected" from="." to="." method="spawn_random_bubble"]
 [connection signal="go_to_menu" from="UI/PauseMenu" to="." method="go_to_menu"]
