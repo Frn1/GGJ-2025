@@ -16,7 +16,6 @@ func _physics_process(delta: float) -> void:
 var hit = false
 
 func _on_body_entered(body: Node2D) -> void:
-	print(body)
 	if hit:
 		return
 	if body is Player:
