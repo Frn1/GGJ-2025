@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dm7m33k71i1gy" path="res://ui/winner_ui.tscn" id="4_tbawe"]
 [ext_resource type="PackedScene" uid="uid://csm3ltwmuiypi" path="res://ui/game_ui.tscn" id="5_3ltng"]
 [ext_resource type="PackedScene" uid="uid://d035e1g1rge3n" path="res://ui/screen_borders.tscn" id="8_gbbn0"]
-[ext_resource type="AudioStream" uid="uid://deeeikqgysnch" path="res://scenes/game/ambient.wav" id="8_hx7jp"]
-[ext_resource type="AudioStream" uid="uid://b31ornvio0e5k" path="res://scenes/game/combat.wav" id="9_1qoew"]
+[ext_resource type="AudioStream" uid="uid://c1swu4aycwmrc" path="res://scenes/game/ambient.ogg" id="9_mf60q"]
+[ext_resource type="AudioStream" uid="uid://cxbrybmcbhmns" path="res://scenes/game/combat.ogg" id="10_2mnvp"]
 [ext_resource type="Texture2D" uid="uid://cnxm48oinhjmf" path="res://levels/background.png" id="11_b0mka"]
 
 [sub_resource type="Animation" id="Animation_pd60d"]
@@ -130,7 +130,6 @@ process_mode = 1
 mouse_filter = 2
 
 [node name="GameUI" parent="UI" instance=ExtResource("5_3ltng")]
-anchors_preset = 15
 grow_vertical = 2
 mouse_filter = 2
 
@@ -142,16 +141,18 @@ mouse_filter = 2
 
 [node name="AmbientMusic" type="AudioStreamPlayer" parent="."]
 process_mode = 3
-stream = ExtResource("8_hx7jp")
+stream = ExtResource("9_mf60q")
 autoplay = true
 bus = &"BG"
 playback_type = 1
+parameters/looping = true
 
 [node name="CombatMusic" type="AudioStreamPlayer" parent="."]
-process_mode = 3
-stream = ExtResource("9_1qoew")
+process_mode = 1
+stream = ExtResource("10_2mnvp")
 bus = &"BG 2"
 playback_type = 1
+parameters/looping = true
 
 [node name="CountdownTimer" type="Timer" parent="."]
 process_mode = 1

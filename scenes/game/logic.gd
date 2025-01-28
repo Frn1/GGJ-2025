@@ -31,6 +31,8 @@ var player_1: Player
 
 signal bubble_collected
 
+const MAIN_MENU_SCENE_PATH = "res://scenes/main_menu.tscn"
+
 func spawn_random_bubble() -> void:
 	if bubbles.get_child_count() > bubbles_at_the_same_time:
 		return
@@ -71,7 +73,7 @@ func spawn_player(number: int) -> void:
 
 func go_to_menu() -> void:
 	exit_anim.play("exit")
-	TransitionController.change_to_file("res://scenes/main_menu.tscn")
+	TransitionController.change_to_scene(ResourceLoader.load_threaded_get(MAIN_MENU_SCENE_PATH))
 
 func player_won(winner: int) -> void:
 	exit_anim.play("battle_end")
@@ -80,7 +82,9 @@ func player_won(winner: int) -> void:
 	# We add the timer to the tree to ensure it doesn't get paused later
 	winner_ui.add_child(menu_timer)
 	menu_timer.one_shot = true
-	menu_timer.timeout.connect(TransitionController.change_to_file.bindv(["res://scenes/main_menu.tscn"]))
+	menu_timer.timeout.connect(TransitionController.change_to_scene.bindv(
+		[ResourceLoader.load_threaded_get(MAIN_MENU_SCENE_PATH)]
+	))
 	menu_timer.start(3)
 	game_timer.paused = true
 	player_0.disable_input = true
@@ -103,6 +107,7 @@ func calculate_time_to_show() -> String:
 		return str(floor(game_timer.time_left))
 
 func _ready() -> void:
+	ResourceLoader.load_threaded_request(MAIN_MENU_SCENE_PATH, "PackedScene")
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	game_ui.timer.text = calculate_time_to_show()
 	level = level_scene.instantiate()
@@ -118,6 +123,7 @@ func _ready() -> void:
 	countdown_timer.start()
 	countdown_ui.play_countdown()
 	await countdown_timer.timeout
+	combat_music.process_mode = Node.PROCESS_MODE_ALWAYS
 	player_0.disable_input = false
 	player_1.disable_input = false
 	for timer in bubble_ammount_timers.get_children():

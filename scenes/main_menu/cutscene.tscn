@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dpmgwsx0lh4n1" path="res://scenes/main_menu/cutscene/frames/cutscene_000.png" id="1_3jyn6"]
 [ext_resource type="Script" path="res://scenes/main_menu/cutscene.gd" id="1_df37i"]
 [ext_resource type="Texture2D" uid="uid://cc4c7y6cpmjyw" path="res://scenes/main_menu/cutscene/frames/cutscene_001.png" id="2_74ax8"]
-[ext_resource type="AudioStream" uid="uid://4cs687fnc3rj" path="res://scenes/main_menu/cutscene/cutscene_audio.wav" id="2_e68jr"]
+[ext_resource type="AudioStream" uid="uid://co44rcw0us7qg" path="res://scenes/main_menu/cutscene/cutscene_audio.ogg" id="2_i64y1"]
 [ext_resource type="Texture2D" uid="uid://c5ny30u3oyeo7" path="res://scenes/main_menu/cutscene/frames/cutscene_002.png" id="3_07cly"]
 [ext_resource type="Texture2D" uid="uid://d35iyqac7rvnn" path="res://scenes/main_menu/cutscene/frames/cutscene_003.png" id="4_3wdva"]
 [ext_resource type="Texture2D" uid="uid://787qyrc7xvgg" path="res://scenes/main_menu/cutscene/frames/cutscene_004.png" id="5_jst6y"]
@@ -226,7 +226,7 @@ size_flags_vertical = 3
 script = ExtResource("1_df37i")
 
 [node name="CutsceneAudio" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_e68jr")
+stream = ExtResource("2_i64y1")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 size = Vector2i(1280, 720)

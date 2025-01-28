@@ -26,11 +26,11 @@ func exit_transition():
 	transition_done.emit()
 
 func change_to_file(path: String) -> void:
+	ResourceLoader.load_threaded_request(path, "PackedScene", true)
 	if anim_player.is_playing():
 		push_error("Scene changed requested in the middle of another scene change!")
 	enter_transition()
 	await anim_player.animation_finished
-	ResourceLoader.load_threaded_request(path, "PackedScene")
 	while ResourceLoader.load_threaded_get_status(path) == ResourceLoader.THREAD_LOAD_IN_PROGRESS:
 		loading()
 		await anim_player.animation_finished

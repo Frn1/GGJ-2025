@@ -260,6 +260,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_2gaog")
+stretch_mode = 6
 
 [node name="P1Win" type="TextureRect" parent="."]
 visible = false
@@ -270,3 +271,4 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_nhkop")
+stretch_mode = 6
