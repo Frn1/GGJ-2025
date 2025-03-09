@@ -17,6 +17,7 @@ tile_map_data = PackedByteArray("AADr/wcAAQAJAAIAAADr/wYAAQAJAAIAAADr/wUAAQAGAAE
 tile_set = ExtResource("3_cf6tb")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+process_mode = 3
 offset = Vector2(0, -125)
 zoom = Vector2(0.97, 0.97)
 drag_horizontal_enabled = true

@@ -185,7 +185,7 @@ parameters/looping = false
 
 [node name="CutsceneTransition" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_8vebt")
+&"": SubResource("AnimationLibrary_8vebt")
 }
 
 [connection signal="pressed" from="Items/Buttons/Play" to="." method="_on_play_pressed"]

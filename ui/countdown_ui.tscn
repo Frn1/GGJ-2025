@@ -276,7 +276,7 @@ script = ExtResource("1_qf8r7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_fse20")
+&"": SubResource("AnimationLibrary_fse20")
 }
 
 [node name="3" type="Label" parent="."]

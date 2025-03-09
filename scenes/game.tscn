@@ -122,6 +122,7 @@ process_mode = 3
 script = ExtResource("3_h01ni")
 
 [node name="ScreenBorders" parent="UI" instance=ExtResource("8_gbbn0")]
+process_mode = 3
 
 [node name="CountdownUI" parent="UI" instance=ExtResource("4_juhyd")]
 process_mode = 1
@@ -178,7 +179,7 @@ one_shot = true
 [node name="ExitAnimation" type="AnimationPlayer" parent="."]
 process_mode = 3
 libraries = {
-"": SubResource("AnimationLibrary_7fcyn")
+&"": SubResource("AnimationLibrary_7fcyn")
 }
 
 [connection signal="bubble_collected" from="." to="." method="spawn_random_bubble"]
