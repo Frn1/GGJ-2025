@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bmg0jmf5uh33v"]
 
 [ext_resource type="Theme" uid="uid://bb1xlj7seedgw" path="res://ui/theme.tres" id="1_0tkk6"]
-[ext_resource type="Script" path="res://ui/countdown_ui.gd" id="1_qf8r7"]
+[ext_resource type="Script" uid="uid://b4bnq7o0prtqw" path="res://ui/countdown_ui.gd" id="1_qf8r7"]
 [ext_resource type="AudioStream" uid="uid://dbrb1dx1mkfmv" path="res://sfx/countdown.wav" id="2_xqmns"]
 
 [sub_resource type="Animation" id="Animation_w53ss"]
@@ -255,8 +255,8 @@ tracks/9/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fse20"]
 resource_local_to_scene = true
 _data = {
-"RESET": SubResource("Animation_w53ss"),
-"countdown": SubResource("Animation_ipgf4")
+&"RESET": SubResource("Animation_w53ss"),
+&"countdown": SubResource("Animation_ipgf4")
 }
 
 [sub_resource type="LabelSettings" id="LabelSettings_f0dsi"]

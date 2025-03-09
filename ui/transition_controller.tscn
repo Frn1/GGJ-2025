@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bbue2rcm4utj4"]
 
-[ext_resource type="Script" path="res://ui/transition_controller.gd" id="1_ty67n"]
+[ext_resource type="Script" uid="uid://dnw6mxnvwpksg" path="res://ui/transition_controller.gd" id="1_ty67n"]
 [ext_resource type="AudioStream" uid="uid://bjkxqef3q8s6o" path="res://sfx/scene_transition.wav" id="2_hcv2u"]
 [ext_resource type="AnimationLibrary" uid="uid://cucaot5dylq7g" path="res://ui/transition_controller/animation.tres" id="2_ysfob"]
 

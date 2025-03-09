@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://diwlpf2om1us6"]
 
-[ext_resource type="Script" path="res://objects/meta/player_spawn.gd" id="1_3w13h"]
+[ext_resource type="Script" uid="uid://cgexf0oiy2lfk" path="res://objects/meta/player_spawn.gd" id="1_3w13h"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lpdya"]
 font_size = 24

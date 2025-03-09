@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://dm7m33k71i1gy"]
 
 [ext_resource type="Theme" uid="uid://bb1xlj7seedgw" path="res://ui/theme.tres" id="1_bv7m7"]
-[ext_resource type="Script" path="res://ui/winner_ui.gd" id="1_hf5bg"]
+[ext_resource type="Script" uid="uid://c4klomuth042h" path="res://ui/winner_ui.gd" id="1_hf5bg"]
 [ext_resource type="Texture2D" uid="uid://cwrd8y7h7b4mk" path="res://ui/winner_ui/p0_win.png" id="3_2gaog"]
 [ext_resource type="AudioStream" uid="uid://bgbdf18d12lgf" path="res://ui/winner_ui/game_end.wav" id="3_ws8ma"]
 [ext_resource type="Texture2D" uid="uid://bw805w7bfdvj2" path="res://ui/winner_ui/p1_win.png" id="4_nhkop"]
@@ -195,10 +195,10 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f37ij"]
 _data = {
-"RESET": SubResource("Animation_glris"),
-"p0_win": SubResource("Animation_87tmo"),
-"p1_win": SubResource("Animation_u2wnv"),
-"tie": SubResource("Animation_5puv1")
+&"RESET": SubResource("Animation_glris"),
+&"p0_win": SubResource("Animation_87tmo"),
+&"p1_win": SubResource("Animation_u2wnv"),
+&"tie": SubResource("Animation_5puv1")
 }
 
 [node name="WinnerUI" type="Control"]

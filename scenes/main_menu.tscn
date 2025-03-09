@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://its1rfbkygrf"]
 
 [ext_resource type="Theme" uid="uid://bb1xlj7seedgw" path="res://ui/theme.tres" id="1_51lul"]
-[ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_dq8jc"]
+[ext_resource type="Script" uid="uid://bf55v4lfcqpf7" path="res://scenes/main_menu.gd" id="1_dq8jc"]
 [ext_resource type="AudioStream" uid="uid://duetkcevlr0hq" path="res://scenes/main_menu/main_menu_music.ogg" id="2_invmf"]
 [ext_resource type="Texture2D" uid="uid://mkjqunrinkic" path="res://scenes/main_menu/logo.png" id="3_iy8v5"]
 [ext_resource type="Texture2D" uid="uid://b0yehy834e3f1" path="res://scenes/main_menu/play_button.png" id="4_7tpw8"]
@@ -90,8 +90,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8vebt"]
 _data = {
-"RESET": SubResource("Animation_5uxrv"),
-"transition": SubResource("Animation_y3xjs")
+&"RESET": SubResource("Animation_5uxrv"),
+&"transition": SubResource("Animation_y3xjs")
 }
 
 [node name="MainMenu" type="Control"]

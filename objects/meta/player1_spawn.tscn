@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b44dtspvr5ath"]
 
-[ext_resource type="Script" path="res://objects/meta/player_spawn.gd" id="1_4xjet"]
+[ext_resource type="Script" uid="uid://cgexf0oiy2lfk" path="res://objects/meta/player_spawn.gd" id="1_4xjet"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mj8py"]
 font_size = 24

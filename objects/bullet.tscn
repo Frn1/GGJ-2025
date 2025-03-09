@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cjgs2ugb8pajh"]
 
-[ext_resource type="Script" path="res://objects/bullet.gd" id="1_sidx5"]
+[ext_resource type="Script" uid="uid://bioup3dobrxu6" path="res://objects/bullet.gd" id="1_sidx5"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_11ohv"]
 a = Vector2(-8, 0)
