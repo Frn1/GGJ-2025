@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=4 uid="uid://df32yymaws6jc"]
 
-[ext_resource type="Script" path="res://levels/level.gd" id="1_i7jbm"]
+[ext_resource type="Script" uid="uid://cgiuy62igevbi" path="res://levels/level.gd" id="1_i7jbm"]
 [ext_resource type="TileSet" uid="uid://bpkjmsw5j4eyn" path="res://tiles/meta.tres" id="2_bmjkp"]
 [ext_resource type="TileSet" uid="uid://dp3tncuffg65m" path="res://tiles/terrain.tres" id="3_cf6tb"]
 
@@ -17,6 +17,7 @@ tile_map_data = PackedByteArray("AADr/wcAAQAJAAIAAADr/wYAAQAJAAIAAADr/wUAAQAGAAE
 tile_set = ExtResource("3_cf6tb")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+process_mode = 3
 offset = Vector2(0, -125)
 zoom = Vector2(0.97, 0.97)
 drag_horizontal_enabled = true

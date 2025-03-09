@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c67sexms4m21d"]
 
-[ext_resource type="Script" path="res://objects/meta/bubble_spawn.gd" id="1_0s7fu"]
+[ext_resource type="Script" uid="uid://b1tld4vd6p1tv" path="res://objects/meta/bubble_spawn.gd" id="1_0s7fu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gv52j"]
 font_size = 24

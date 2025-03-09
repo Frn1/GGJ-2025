@@ -98,13 +98,13 @@ func calculate_time_to_show() -> String:
 		if timer_ran: return "0"
 		else: 
 			if game_timer.wait_time > 99: return "99"
-			else: return str(ceil(game_timer.wait_time))
+			else: return str(int(ceil(game_timer.wait_time)))
 	else:
 		timer_ran = true
 	if game_timer.wait_time > 99:
-		return str(floor(lerp(0, 99, game_timer.time_left / game_timer.wait_time)))
+		return str(int(floor(lerp(0, 99, game_timer.time_left / game_timer.wait_time))))
 	else:
-		return str(floor(game_timer.time_left))
+		return str(int(floor(game_timer.time_left)))
 
 func _ready() -> void:
 	ResourceLoader.load_threaded_request(MAIN_MENU_SCENE_PATH, "PackedScene")

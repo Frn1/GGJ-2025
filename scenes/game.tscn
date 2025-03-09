@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://dfpisuwwkekub"]
 
-[ext_resource type="Script" path="res://scenes/game/logic.gd" id="1_6lxwd"]
-[ext_resource type="Script" path="res://scenes/game/ui.gd" id="3_h01ni"]
+[ext_resource type="Script" uid="uid://ch2wpbuwwihvv" path="res://scenes/game/logic.gd" id="1_6lxwd"]
+[ext_resource type="Script" uid="uid://b5oyywiiyuvot" path="res://scenes/game/ui.gd" id="3_h01ni"]
 [ext_resource type="PackedScene" uid="uid://dontxjg52bvb7" path="res://ui/pause_menu.tscn" id="3_m536y"]
 [ext_resource type="PackedScene" uid="uid://bmg0jmf5uh33v" path="res://ui/countdown_ui.tscn" id="4_juhyd"]
 [ext_resource type="PackedScene" uid="uid://dm7m33k71i1gy" path="res://ui/winner_ui.tscn" id="4_tbawe"]
@@ -95,9 +95,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7fcyn"]
 _data = {
-"RESET": SubResource("Animation_pd60d"),
-"battle_end": SubResource("Animation_j4but"),
-"exit": SubResource("Animation_1rmtk")
+&"RESET": SubResource("Animation_pd60d"),
+&"battle_end": SubResource("Animation_j4but"),
+&"exit": SubResource("Animation_1rmtk")
 }
 
 [node name="Game" type="Node2D"]
@@ -122,6 +122,7 @@ process_mode = 3
 script = ExtResource("3_h01ni")
 
 [node name="ScreenBorders" parent="UI" instance=ExtResource("8_gbbn0")]
+process_mode = 3
 
 [node name="CountdownUI" parent="UI" instance=ExtResource("4_juhyd")]
 process_mode = 1
@@ -178,7 +179,7 @@ one_shot = true
 [node name="ExitAnimation" type="AnimationPlayer" parent="."]
 process_mode = 3
 libraries = {
-"": SubResource("AnimationLibrary_7fcyn")
+&"": SubResource("AnimationLibrary_7fcyn")
 }
 
 [connection signal="bubble_collected" from="." to="." method="spawn_random_bubble"]

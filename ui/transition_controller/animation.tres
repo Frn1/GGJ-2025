@@ -151,8 +151,8 @@ tracks/0/keys = {
 
 [resource]
 _data = {
-"RESET": SubResource("Animation_82gs4"),
-"enter": SubResource("Animation_ectx4"),
-"exit": SubResource("Animation_mgmay"),
-"loading": SubResource("Animation_43gsi")
+&"RESET": SubResource("Animation_82gs4"),
+&"enter": SubResource("Animation_ectx4"),
+&"exit": SubResource("Animation_mgmay"),
+&"loading": SubResource("Animation_43gsi")
 }
