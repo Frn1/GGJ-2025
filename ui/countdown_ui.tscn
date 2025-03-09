@@ -264,6 +264,7 @@ resource_local_to_scene = true
 font_size = 256
 
 [node name="CountdownUI" type="Control"]
+process_mode = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -275,6 +276,7 @@ theme = ExtResource("1_0tkk6")
 script = ExtResource("1_qf8r7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 1
 libraries = {
 &"": SubResource("AnimationLibrary_fse20")
 }

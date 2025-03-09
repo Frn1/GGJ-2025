@@ -18,7 +18,7 @@ func _ready() -> void:
 	AudioServer.set_bus_effect_enabled(bg_2_bus_id, 0, false)
 	bg_bus_unpaused_db = AudioServer.get_bus_volume_db(bg_bus_id)
 	bg_2_bus_unpaused_db = AudioServer.get_bus_volume_db(bg_2_bus_id)
-	pass
+	get_window().focus_exited.connect(pause_game)
 
 func _notification(what):
 	if what == NOTIFICATION_APPLICATION_FOCUS_OUT:
@@ -39,9 +39,11 @@ func pause_game():
 	get_tree().paused = true
 	$PauseMenu.mouse_filter = Control.MOUSE_FILTER_STOP
 	$PauseMenu.show()
+	
 	for tween in current_tweens:
 		tween.kill()
 	current_tweens.clear()
+	
 	AudioServer.set_bus_effect_enabled(bg_2_bus_id, 0, true)
 	AudioServer.set_bus_volume_db(bg_bus_id, bg_bus_paused_db)
 	AudioServer.set_bus_volume_db(bg_2_bus_id, bg_2_bus_paused_db)
@@ -53,10 +55,12 @@ func unpause_game():
 	get_tree().paused = false
 	$PauseMenu.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	$PauseMenu.hide()
+	
 	for tween in current_tweens:
 		tween.stop()
 		tween.kill()
 	current_tweens.clear()
+	
 	current_tweens.append(create_tween())
 	current_tweens[-1].tween_method(func(value): AudioServer.set_bus_volume_db(bg_bus_id, value), AudioServer.get_bus_volume_db(bg_bus_id), bg_bus_unpaused_db, 0.5)
 	

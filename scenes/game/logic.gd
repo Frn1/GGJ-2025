@@ -123,6 +123,7 @@ func _ready() -> void:
 	countdown_timer.start()
 	countdown_ui.play_countdown()
 	await countdown_timer.timeout
+	ambient_music.process_mode = Node.PROCESS_MODE_ALWAYS
 	combat_music.process_mode = Node.PROCESS_MODE_ALWAYS
 	player_0.disable_input = false
 	player_1.disable_input = false
@@ -153,4 +154,3 @@ func _on_game_timer_timeout() -> void:
 		player_won(1)
 	else:
 		player_won(-1)
-	pass # Replace with function body.
