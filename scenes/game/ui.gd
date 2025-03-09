@@ -19,7 +19,12 @@ func _ready() -> void:
 	bg_bus_unpaused_db = AudioServer.get_bus_volume_db(bg_bus_id)
 	bg_2_bus_unpaused_db = AudioServer.get_bus_volume_db(bg_2_bus_id)
 	pass
-	
+
+func _notification(what):
+	if what == NOTIFICATION_APPLICATION_FOCUS_OUT:
+		if get_tree().paused == false:
+			pause_game()
+
 func toggle_pause():
 	if get_tree().paused == false:
 		pause_game()
@@ -29,6 +34,8 @@ func toggle_pause():
 var current_tweens: Array[Tween] = []
 
 func pause_game():
+	if get_tree().paused == true:
+		return
 	get_tree().paused = true
 	$PauseMenu.mouse_filter = Control.MOUSE_FILTER_STOP
 	$PauseMenu.show()
@@ -41,6 +48,8 @@ func pause_game():
 	AudioServer.get_bus_effect(bg_2_bus_id, 0).cutoff_hz = 400
 
 func unpause_game():
+	if get_tree().paused == false:
+		return
 	get_tree().paused = false
 	$PauseMenu.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	$PauseMenu.hide()
